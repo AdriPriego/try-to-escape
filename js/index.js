@@ -12,6 +12,9 @@ window.onload = function () {
     game = new Juego();
 
     game.start();
+    game.obstaclesAppear();
+
+    game.automaautomaticMovement()
   }
 
   /*let game = {
@@ -21,7 +24,7 @@ window.onload = function () {
     };*/
 
   function handleKeydown(event) {
-    //console.log("presionando", events.key)
+    //console.log("presionando", event.key)
     const key = event.key;
     const possibleKeystrokes = [
       "ArrowUp",
@@ -36,9 +39,11 @@ window.onload = function () {
       switch (key) {
         case "ArrowUp":
           game.player.directionY = -1.5;
+          game.police.directionY = -1.5;
           break;
         case "ArrowDown":
           game.player.directionY = 1.5;
+          game.police.directionY = 1.5;
           break;
       }
     }

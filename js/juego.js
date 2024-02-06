@@ -28,9 +28,14 @@ class Juego {
     this.gameLoopFrequency = Math.round(1000 / 60);
 
     this.obstaculosArr = []
-    this.gameIntervalId; 
-    this.obstacleIntervalId;//
     this.obstaculeAppearFrequency = 1500//
+  }
+
+  obstaclesAppear() {
+    setInterval(() => {
+      let positionAppear = Math.random() * (-120)
+      
+    }, this.obstaculeAppearFrequency = 1500)
   }
 
   start() {
@@ -46,11 +51,6 @@ class Juego {
     this.gameIntervalId = setInterval(() => {
       this.gameLoop()
     }, this.gameLoopFrequency)
-
-    /*this.obstacleIntervalId = setInterval(() => {
-      this.createObstacle()
-    }, this.obstaculeAppearFrequency);*/
-    
   }
 
 
@@ -61,12 +61,14 @@ class Juego {
 
     if (this.gameIsOver) {
       clearInterval(this.gameIntervalId)
-      clearInterval(this.obstacleIntervalId)//
     }
   }
 
   update() {
     this.player.move();
     //this.police.move()
+    if (Math.random() > 0.98 && this.obstacles.length < 1) {
+      this.obstacles.push(new Obstaculo(this.gameScreen));
+    }
   }
 }
