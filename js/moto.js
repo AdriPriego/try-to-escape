@@ -23,11 +23,10 @@ class Moto {
     this.left += this.directionX;
     this.top += this.directionY;
 
-    
-    
-    if (this.left > this.gameScreen.offsetWidth - this.width - 10) {
-      this.left = this.gameScreen.offsetWidth - this.width - 10;
-    }
+    if (this.top < 590) {
+      this.top = 590;
+    } 
+ 
     if (this.top > this.gameScreen.offsetHeight - this.height - 10) {
       this.top = this.gameScreen.offsetHeight - this.height - 10;
     }

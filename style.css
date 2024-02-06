@@ -23,8 +23,7 @@ body {
     overflow: hidden;
     position: relative;
     background-image: url(img/background.gif);
-    background-size: center;
-    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   h2 {
