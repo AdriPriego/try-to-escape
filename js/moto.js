@@ -25,13 +25,13 @@ class Moto {
 
     if (this.top < 590) {
       this.top = 590;
-    } 
- 
+    }
+
     if (this.top > this.gameScreen.offsetHeight - this.height - 10) {
       this.top = this.gameScreen.offsetHeight - this.height - 10;
     }
 
-    
+
     this.updatePosition();
   }
   updatePosition() {

@@ -12,9 +12,6 @@ window.onload = function () {
     game = new Juego();
 
     game.start();
-    game.obstaclesAppear();
-
-    game.automaautomaticMovement()
   }
 
   /*let game = {

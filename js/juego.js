@@ -26,16 +26,14 @@ class Juego {
     this.gameIsOver = false;
     this.gameIntervalId;
     this.gameLoopFrequency = Math.round(1000 / 60);
-
-    this.obstaculosArr = []
     this.obstaculeAppearFrequency = 1500//
   }
 
-  obstaclesAppear() {
+
+  aparicionObstaculos() {
     setInterval(() => {
-      let positionAppear = Math.random() * (-120)
-      
-    }, this.obstaculeAppearFrequency = 1500)
+      this.obstacles.push(new Obstaculo(this.gameScreen)); //agrega un elemento nuevo al final
+    }, 3000)
   }
 
   start() {
@@ -48,11 +46,12 @@ class Juego {
     // enseñar la pantalla
     this.gameScreen.style.display = "block";
 
+    this.aparicionObstaculos();
+
     this.gameIntervalId = setInterval(() => {
       this.gameLoop()
     }, this.gameLoopFrequency)
   }
-
 
   gameLoop() {
     console.log("in the game loop");
@@ -67,6 +66,11 @@ class Juego {
   update() {
     this.player.move();
     //this.police.move()
+
+    for (let i = 0; i < this.obstacles.length; i++) {
+      const obstacle = this.obstacles[i];
+      obstacle.move();
+    }
     if (Math.random() > 0.98 && this.obstacles.length < 1) {
       this.obstacles.push(new Obstaculo(this.gameScreen));
     }

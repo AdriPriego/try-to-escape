@@ -1,9 +1,9 @@
 class Obstaculo {
-
+  
   constructor(gameScreen) {
     this.gameScreen = gameScreen;
-    this.left = Math.floor(Math.random() * 1000 + 200);
-    this.top = 730;
+    this.left = 1300;
+    this.top = Math.floor(Math.random() * 101 + 700); //entre 700 y 800
     this.width = 40;
     this.height = 40;
     this.element = document.createElement("img");
@@ -17,14 +17,16 @@ class Obstaculo {
 
     this.gameScreen.appendChild(this.element);
 
-    this.x = gameScreen.offsetWidth;
-    this.speed = 1
+    this.speed = 3
   }
 
-  automaticMovement() {
-
-    this.x -= this.speed
-    this.node.style.left = `${this.x}px`
-
+  updatePosition() {
+    this.element.style.left = `${this.left}px`
+    this.element.style.top = `${this.top}px`
   }
+
+ move() {
+  this.left -= this.speed;
+  this.updatePosition()
+ }
 }
