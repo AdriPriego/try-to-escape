@@ -7,6 +7,10 @@ window.onload = function () {
     startGame();
   });
 
+  restartButton.addEventListener("click", function () {
+    restartGame();
+  });
+
   function startGame() {
     console.log("start game");
     game = new Juego();
@@ -15,6 +19,10 @@ window.onload = function () {
     game.checkColisiones()
   }
 
+  function restartGame() {
+    console.log("has acabado")
+    startGame()
+  }
   /*let game = {
       player: {
         directionX: 0,

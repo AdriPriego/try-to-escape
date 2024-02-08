@@ -4,8 +4,8 @@ class Obstaculo {
     this.gameScreen = gameScreen;
     this.left = 1300;
     this.top = Math.floor(Math.random() * 101 + 700); //entre 700 y 800
-    this.width = 40;
-    this.height = 40;
+    this.width = 25;
+    this.height = 25;
     this.element = document.createElement("img");
 
     this.element.src = "./img/obstacle.png";

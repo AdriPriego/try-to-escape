@@ -15,6 +15,8 @@ class Moto {
     this.element.style.height = `${height}px`;
     this.element.style.left = `${left}px`;
     this.element.style.top = `${top}px`;
+    
+    
 
     this.gameScreen.appendChild(this.element);
   }
@@ -23,8 +25,8 @@ class Moto {
     this.left += this.directionX;
     this.top += this.directionY;
 
-    if (this.top < 590) {
-      this.top = 590;
+    if (this.top < 660) {
+      this.top = 660;
     }
 
     if (this.top > this.gameScreen.offsetHeight - this.height - 10) {

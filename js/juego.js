@@ -3,20 +3,21 @@ class Juego {
     this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
+    this.gameContainer = document.getElementById("game-container");
     this.player = new Moto(
       this.gameScreen,
       500,
-      630,
-      150,
-      150,
-      "./img/motoRepartidor.gif"
+      710,
+      100,
+      80,
+      "./img/kart.gif"
     );
     this.police = new Police(
       this.gameScreen,
       0,
-      570,
-      400,
-      300,
+      620,
+      350,
+      250,
       "./img/cochepolicia.gif"
     );
     this.height = 800;
@@ -25,6 +26,7 @@ class Juego {
     this.score = 0;
     this.gameIsOver = false;
     this.gameIntervalId;
+    this.obstacleIntervalId
     this.gameLoopFrequency = Math.round(1000 / 60);
     this.obstaculeAppearFrequency = 1500//
   }
@@ -37,10 +39,11 @@ class Juego {
       if(
         this.player.left < obstacle.left + obstacle.width &&
         this.player.left + this.player.width > obstacle.left &&
-        this.player.top < obstacle.top + obstacle.height &&
+        this.player.top + 40 < obstacle.top + obstacle.height &&
         this.player.top + this.player.height > obstacle.top
       ) {
         console.log("toque")
+        this.endGame()
       }
     }
   }
@@ -48,6 +51,7 @@ class Juego {
 
   aparicionObstaculos() {
     setInterval(() => {
+      console.log("3 segundos")
       this.obstacles.push(new Obstaculo(this.gameScreen)); //agrega un elemento nuevo al final
     }, 3000)
   }
@@ -56,8 +60,9 @@ class Juego {
     setTimeout(() => {
       setInterval(() => {
         this.obstacles.push(new Obstaculo(this.gameScreen)); 
-      }, 2000)
-    }, 5000);
+        console.log("poniendo pincho")
+      }, 6000)
+    }, 10000);
   }
 
   start() {
@@ -69,7 +74,7 @@ class Juego {
     this.startScreen.style.display = "none";
     // enseñar la pantalla
     this.gameScreen.style.display = "block";
-
+    
     this.aparicionObstaculos();
     this.checkColisiones()
     this.aparicionObstaculos2()
@@ -78,7 +83,6 @@ class Juego {
       this.gameLoop()
     }, this.gameLoopFrequency)
   }
-
   gameLoop() {
     console.log("in the game loop");
 
@@ -87,6 +91,7 @@ class Juego {
 
     if (this.gameIsOver) {
       clearInterval(this.gameIntervalId)
+      clearInterval(this.obstacleIntervalId)
     }
   }
 
@@ -101,5 +106,14 @@ class Juego {
     if (Math.random() > 0.98 && this.obstacles.length < 1) {
       this.obstacles.push(new Obstaculo(this.gameScreen));
     }
+  }
+
+  endGame() {
+    this.gameScreen.style.display = "none";
+    
+    this.gameEndScreen.style.display = "flex";
+
+    clearInterval(this.gameIntervalId)
+    clearInterval(this.obstacleAppearIntervalId)
   }
 }
