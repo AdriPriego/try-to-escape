@@ -61,8 +61,8 @@ class Juego {
       setInterval(() => {
         this.obstacles.push(new Obstaculo(this.gameScreen)); 
         console.log("poniendo pincho")
-      }, 6000)
-    }, 10000);
+      }, 6335)
+    }, 20000);
   }
 
   start() {
