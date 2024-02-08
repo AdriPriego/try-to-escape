@@ -30,10 +30,34 @@ class Juego {
   }
 
 
+  checkColisiones() {
+    for (let i = 0; i < this.obstacles.length; i++) {
+      const obstacle = this.obstacles[i]
+
+      if(
+        this.player.left < obstacle.left + obstacle.width &&
+        this.player.left + this.player.width > obstacle.left &&
+        this.player.top < obstacle.top + obstacle.height &&
+        this.player.top + this.player.height > obstacle.top
+      ) {
+        console.log("toque")
+      }
+    }
+  }
+
+
   aparicionObstaculos() {
     setInterval(() => {
       this.obstacles.push(new Obstaculo(this.gameScreen)); //agrega un elemento nuevo al final
     }, 3000)
+  }
+
+  aparicionObstaculos2() {
+    setTimeout(() => {
+      setInterval(() => {
+        this.obstacles.push(new Obstaculo(this.gameScreen)); 
+      }, 2000)
+    }, 5000);
   }
 
   start() {
@@ -47,6 +71,8 @@ class Juego {
     this.gameScreen.style.display = "block";
 
     this.aparicionObstaculos();
+    this.checkColisiones()
+    this.aparicionObstaculos2()
 
     this.gameIntervalId = setInterval(() => {
       this.gameLoop()
@@ -57,6 +83,7 @@ class Juego {
     console.log("in the game loop");
 
     this.update();
+    this.checkColisiones();
 
     if (this.gameIsOver) {
       clearInterval(this.gameIntervalId)

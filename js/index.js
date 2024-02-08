@@ -12,6 +12,7 @@ window.onload = function () {
     game = new Juego();
 
     game.start();
+    game.checkColisiones()
   }
 
   /*let game = {

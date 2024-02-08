@@ -1,4 +1,5 @@
 body {
+    margin: 0;
     padding: 0;
     text-align: center;
     overflow: hidden;
@@ -14,7 +15,14 @@ body {
     padding: 20px 0px;
     justify-content: center;
   }
-  
+  .name {
+    text-shadow: 2px 2px 2px rgb(250, 128, 114);
+    padding-top: 0;
+    margin-top: 0;
+    text-transform: uppercase;
+    color: rgb(29, 250, 0);
+    background: linear-gradient(white, black);
+  }
   #game-screen {
     margin-top: 150px;
     display: none;
@@ -40,4 +48,14 @@ body {
   #game-end {
     display: none;
   }
-  
+  #start-button {
+    border-radius: 20px;
+    height: 50px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    transition: all 500ms;
+  }
+  #start-button:hover {
+    color: black;
+    background-color: white;
+  }
