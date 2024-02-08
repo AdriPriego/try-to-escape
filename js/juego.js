@@ -29,6 +29,7 @@ class Juego {
     this.obstacleIntervalId
     this.gameLoopFrequency = Math.round(1000 / 60);
     this.obstaculeAppearFrequency = 1500//
+    this.timer = 0
   }
 
 
@@ -65,6 +66,18 @@ class Juego {
     }, 20000);
   }
 
+  startTimer() {
+    this.timerIntervalId = setInterval(() => {
+      this.timer++; 
+      this.updateTimerDisplay(); 
+    }, 1000); 
+  }
+
+  updateTimerDisplay() {
+    const timerDisplay = document.getElementById("timer-display");
+    timerDisplay.textContent = `Tiempo: ${this.timer} segundos`;
+  }
+
   start() {
     // altura y anchura
     this.gameScreen.style.height = `${this.height}px`;
@@ -78,6 +91,7 @@ class Juego {
     this.aparicionObstaculos();
     this.checkColisiones()
     this.aparicionObstaculos2()
+    this.startTimer()
 
     this.gameIntervalId = setInterval(() => {
       this.gameLoop()
@@ -88,6 +102,7 @@ class Juego {
 
     this.update();
     this.checkColisiones();
+    this.updateTimerDisplay()
 
     if (this.gameIsOver) {
       clearInterval(this.gameIntervalId)
@@ -113,7 +128,16 @@ class Juego {
     
     this.gameEndScreen.style.display = "flex";
 
+
+    this.obstacles.forEach(function (obstacle) {
+      obstacle.element.remove();
+    });
+    
+    this.player.element.remove()
+    this.gameIsOver = true;
+
     clearInterval(this.gameIntervalId)
     clearInterval(this.obstacleAppearIntervalId)
+    clearInterval(this.timerIntervalId);
   }
 }
