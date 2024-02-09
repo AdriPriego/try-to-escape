@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css">
-    <title>Try To Scape</title>
-  </head>
-  <body>
-    <main>
-      <!-- #game-intro is initially shown on the game start screen -->
-      <div id="game-intro">
-        <h1 class="name">Try to Scape</h1>
-        <img src="img/portada.png" alt="portada">
-        <br />
-        <button id="start-button">Start Game</button>
-      </div>
 
-      <div id="game-container">
-        <div>
-          <div id="timer-display">Tiempo Recorrido: 0</div>
-        </div>
-        <!-- #game-screen is initially hidden using CSS style display: none -->
-        <div id="game-screen"></div>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="style.css">
+  <title>Try To Scape</title>
+</head>
 
-      <!-- #game-end is initially hidden using CSS style display: none -->
-      <div id="game-end">
-        <h1>Te Han Capturado!</h1>
-        <br />
-        <button id="restart-button">Restart</button>
-      </div>
-    </main>
+<body>
+  <main>
+    <!-- #game-intro-->
+    <div id="game-intro">
+      <h1 class="name">Try to Scape</h1>
+      <img src="img/portada.png" alt="portada">
+      <br />
+      <button id="start-button">Start Game</button>
+    </div>
 
-    <script src="js/index.js"></script>
-    <script src="js/juego.js"></script>
-    <script src="js/moto.js"></script>
-    <script src="js/obstaculos.js"></script>
-    <script src="js/police.js"></script>
-  </body>
+    <div id="game-container">
+      <div>
+        <div id="timer-display"></div>
+      </div>
+      <!-- #game-screen-->
+      <div id="game-screen"></div>
+    </div>
+
+    <!-- #game-end -->
+    <div id="game-end">
+      <h1>Te Han Capturado!</h1>
+      <img class="capturado" src="img/capturado.jpg" alt="">
+      <br />
+      <button id="restart-button">Restart</button>
+    </div>
+  </main>
+
+  <script src="js/index.js"></script>
+  <script src="js/juego.js"></script>
+  <script src="js/moto.js"></script>
+  <script src="js/obstaculos.js"></script>
+  <script src="js/police.js"></script>
+</body>
+
 </html>

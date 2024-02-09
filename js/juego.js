@@ -28,19 +28,19 @@ class Juego {
     this.gameIntervalId;
     this.obstacleIntervalId
     this.gameLoopFrequency = Math.round(1000 / 60);
-    this.obstaculeAppearFrequency = 1500//
+    this.obstaculeAppearFrequency = 1500
     this.timer = 0
   }
 
-
+  //COLISIONES
   checkColisiones() {
     for (let i = 0; i < this.obstacles.length; i++) {
       const obstacle = this.obstacles[i]
 
-      if(
+      if (
         this.player.left < obstacle.left + obstacle.width &&
         this.player.left + this.player.width > obstacle.left &&
-        this.player.top + 40 < obstacle.top + obstacle.height &&
+        this.player.top + 45 < obstacle.top + obstacle.height &&
         this.player.top + this.player.height > obstacle.top
       ) {
         console.log("toque")
@@ -49,57 +49,57 @@ class Juego {
     }
   }
 
-
+  // OBSTACULOS
   aparicionObstaculos() {
     setInterval(() => {
-      console.log("3 segundos")
-      this.obstacles.push(new Obstaculo(this.gameScreen)); //agrega un elemento nuevo al final
-    }, 3000)
+      this.obstacles.push(new Obstaculo(this.gameScreen));
+    }, 2000)
   }
 
   aparicionObstaculos2() {
     setTimeout(() => {
       setInterval(() => {
-        this.obstacles.push(new Obstaculo(this.gameScreen)); 
-        console.log("poniendo pincho")
-      }, 6335)
-    }, 20000);
+        this.obstacles.push(new Obstaculo(this.gameScreen));
+      }, 2600)
+    }, 32555);
   }
-
+  //CONTADOR DE TEMPO
   startTimer() {
     this.timerIntervalId = setInterval(() => {
-      this.timer++; 
-      this.updateTimerDisplay(); 
-    }, 1000); 
+      this.timer++;
+      this.updateTimerDisplay();
+    }, 1000);
   }
 
   updateTimerDisplay() {
     const timerDisplay = document.getElementById("timer-display");
-    timerDisplay.textContent = `Tiempo: ${this.timer} segundos`;
+    timerDisplay.textContent = `Recorrido: ${this.timer} Metros`;
   }
-
+  // FUNCUION DE EMPEZAR
   start() {
-    // altura y anchura
     this.gameScreen.style.height = `${this.height}px`;
     this.gameScreen.style.width = `${this.width}px`;
 
-    // ocultar la pantalla
+
+
     this.startScreen.style.display = "none";
-    // enseñar la pantalla
+
     this.gameScreen.style.display = "block";
-    
+
+    this.gameEndScreen.style.display = "none";
+
     this.aparicionObstaculos();
     this.checkColisiones()
     this.aparicionObstaculos2()
     this.startTimer()
 
+    clearInterval(this.obstacleIntervalId)
     this.gameIntervalId = setInterval(() => {
       this.gameLoop()
     }, this.gameLoopFrequency)
   }
+  // BUCLE DEL JUEGO
   gameLoop() {
-    console.log("in the game loop");
-
     this.update();
     this.checkColisiones();
     this.updateTimerDisplay()
@@ -112,7 +112,6 @@ class Juego {
 
   update() {
     this.player.move();
-    //this.police.move()
 
     for (let i = 0; i < this.obstacles.length; i++) {
       const obstacle = this.obstacles[i];
@@ -122,22 +121,24 @@ class Juego {
       this.obstacles.push(new Obstaculo(this.gameScreen));
     }
   }
-
+  // FINAL DE PARTIDA
   endGame() {
     this.gameScreen.style.display = "none";
-    
+
     this.gameEndScreen.style.display = "flex";
 
 
     this.obstacles.forEach(function (obstacle) {
       obstacle.element.remove();
     });
-    
+
+    this.obstacles = [];
+
     this.player.element.remove()
     this.gameIsOver = true;
 
     clearInterval(this.gameIntervalId)
-    clearInterval(this.obstacleAppearIntervalId)
+    clearInterval(this.obstacleIntervalId)
     clearInterval(this.timerIntervalId);
   }
 }

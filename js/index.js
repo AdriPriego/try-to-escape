@@ -12,7 +12,6 @@ window.onload = function () {
   });
 
   function startGame() {
-    console.log("start game");
     game = new Juego();
 
     game.start();
@@ -20,17 +19,9 @@ window.onload = function () {
   }
 
   function restartGame() {
-    console.log("has acabado")
     startGame()
   }
-  /*let game = {
-      player: {
-        directionX: 0,
-      },
-    };*/
-
   function handleKeydown(event) {
-    //console.log("presionando", event.key)
     const key = event.key;
     const possibleKeystrokes = [
       "ArrowUp",

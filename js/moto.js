@@ -15,8 +15,8 @@ class Moto {
     this.element.style.height = `${height}px`;
     this.element.style.left = `${left}px`;
     this.element.style.top = `${top}px`;
-    
-    
+
+
 
     this.gameScreen.appendChild(this.element);
   }
