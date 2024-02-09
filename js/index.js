@@ -1,6 +1,10 @@
 window.onload = function () {
   const startButton = document.getElementById("start-button");
   const restartButton = document.getElementById("restart-button");
+  const sonidoStart = document.getElementById("sonidoStart");
+  const sonidoCrash = document.getElementById("sonidoCrash");
+  sonidoStart.volume = 0.1;
+  sonidoCrash.volume = 0.1;
   let game;
 
   startButton.addEventListener("click", function () {

@@ -45,10 +45,10 @@ class Juego {
       ) {
         console.log("toque")
         this.endGame()
+        sonidoCrash.play();
       }
     }
   }
-
   // OBSTACULOS
   aparicionObstaculos() {
     setInterval(() => {
@@ -80,13 +80,13 @@ class Juego {
     this.gameScreen.style.height = `${this.height}px`;
     this.gameScreen.style.width = `${this.width}px`;
 
-
-
     this.startScreen.style.display = "none";
 
     this.gameScreen.style.display = "block";
 
     this.gameEndScreen.style.display = "none";
+
+    sonidoStart.play();
 
     this.aparicionObstaculos();
     this.checkColisiones()

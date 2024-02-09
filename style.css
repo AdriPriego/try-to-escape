@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
 
 body {
   margin: 0;
@@ -6,6 +7,7 @@ body {
   text-align: center;
   overflow: hidden;
   background-color: black;
+  font-family: 'Pixelify Sans', sans-serif;
 }
 
 #game-intro {
